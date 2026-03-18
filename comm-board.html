@@ -29,21 +29,8 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; font-size: 15px; line-height: 1.7; }
-
-  /* Sidebar */
-  #sidebar {
-    width: var(--sidebar-width);
-    background: var(--sidebar-bg);
-    position: fixed;
-    top: 0; left: 0; bottom: 0;
-    overflow-y: auto;
-    z-index: 100;
-    padding-bottom: 2rem;
-  }
-  #sidebar-header {
-    background: var(--teal);
-    padding: 1.25rem 1.5rem;
-  }
+  #sidebar { width: var(--sidebar-width); background: var(--sidebar-bg); position: fixed; top: 0; left: 0; bottom: 0; overflow-y: auto; z-index: 100; padding-bottom: 2rem; }
+  #sidebar-header { background: var(--teal); padding: 1.25rem 1.5rem; }
   #sidebar-header h1 { color: #fff; font-size: 14px; font-weight: 700; line-height: 1.4; }
   #sidebar-header p { color: rgba(255,255,255,0.8); font-size: 11px; margin-top: 4px; }
   #sidebar nav { padding: 1rem 0; }
@@ -53,93 +40,52 @@
   .nav-item.active { color: var(--sidebar-active); border-left-color: var(--sidebar-active); background: rgba(27,168,200,0.1); }
   .nav-sub { padding-left: 2.5rem; font-size: 12px; color: #718096; }
   .nav-sub:hover { color: #a0aec0; }
-
-  /* Main content */
-  #main {
-    margin-left: var(--sidebar-width);
-    flex: 1;
-    padding: 2rem 2.5rem;
-    max-width: 860px;
-  }
-
-  /* Page header */
-  .page-header {
-    background: var(--teal);
-    border-radius: 10px;
-    padding: 2rem 2.5rem;
-    margin-bottom: 2rem;
-    color: white;
-  }
+  #main { margin-left: var(--sidebar-width); flex: 1; padding: 2rem 2.5rem; max-width: 860px; }
+  .page-header { background: var(--teal); border-radius: 10px; padding: 2rem 2.5rem; margin-bottom: 2rem; color: white; }
   .page-header h1 { font-size: 24px; font-weight: 700; }
   .page-header .meta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.75rem; }
   .meta-badge { background: rgba(255,255,255,0.2); border-radius: 20px; padding: 3px 12px; font-size: 12px; }
-
-  /* Sections */
   .section { margin-bottom: 2.5rem; scroll-margin-top: 1.5rem; }
-  .section-title {
-    font-size: 20px; font-weight: 700; color: var(--text);
-    border-bottom: 2px solid var(--teal);
-    padding-bottom: 0.5rem; margin-bottom: 1.25rem;
-    display: flex; align-items: center; gap: 0.5rem;
-  }
+  .section-title { font-size: 20px; font-weight: 700; color: var(--text); border-bottom: 2px solid var(--teal); padding-bottom: 0.5rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
   .section-num { background: var(--teal); color: white; border-radius: 6px; padding: 2px 8px; font-size: 13px; }
   .subsection { margin-bottom: 1.5rem; scroll-margin-top: 1.5rem; }
-  .subsection-title { font-size: 16px; font-weight: 600; color: var(--teal-dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+  .subsection-title { font-size: 16px; font-weight: 600; color: var(--teal-dark); margin-bottom: 0.75rem; }
   .subsubsection { margin-bottom: 1.25rem; scroll-margin-top: 1.5rem; }
   .subsubsection-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; }
-
-  /* Cards */
   .card { background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1rem; }
-
-  /* Callouts */
-  .callout { border-radius: 8px; padding: 1rem 1.25rem; margin: 0.75rem 0; border-left: 4px solid; font-size: 14px; }
+  .callout { border-radius: 8px; padding: 0.5rem 1rem; margin: 0.4rem 0; border-left: 4px solid; font-size: 14px; line-height: 1.5; }
   .callout-warning { background: var(--warning-bg); border-color: var(--warning-border); }
   .callout-info { background: var(--info-bg); border-color: var(--info-border); }
   .callout-danger { background: var(--danger-bg); border-color: var(--danger-border); }
   .callout-success { background: var(--success-bg); border-color: var(--success-border); }
-  .callout strong { display: block; margin-bottom: 2px; }
-
-  /* Lists */
+  .callout-label { font-weight: 700; display: block; margin-bottom: 2px; }
   ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
-  li { margin-bottom: 0.4rem; }
-  ul ul, ol ol { margin-top: 0.4rem; }
-
-  /* Steps */
+  li { margin-bottom: 0.4rem; line-height: 1.6; }
   .steps { list-style: none; padding: 0; counter-reset: steps; }
-  .steps li { counter-increment: steps; display: flex; gap: 1rem; margin-bottom: 0.75rem; align-items: flex-start; }
-  .steps li::before { content: counter(steps); background: var(--teal); color: white; border-radius: 50%; width: 24px; height: 24px; min-width: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; margin-top: 2px; }
-
-  /* Code block */
+  .steps li { counter-increment: steps; display: flex; gap: 0.75rem; margin-bottom: 0.4rem; align-items: flex-start; }
+  .steps li::before { content: counter(steps); background: var(--teal); color: white; border-radius: 50%; width: 22px; height: 22px; min-width: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; margin-top: 2px; flex-shrink: 0; }
+  .step-text { flex: 1; }
   .code-block { background: var(--code-bg); color: #e2e8f0; border-radius: 8px; padding: 1.25rem; font-family: 'Courier New', monospace; font-size: 12px; line-height: 1.6; overflow-x: auto; margin: 0.75rem 0; position: relative; }
-  .copy-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #e2e8f0; border-radius: 5px; padding: 3px 10px; font-size: 11px; cursor: pointer; transition: background 0.15s; }
+  .copy-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #e2e8f0; border-radius: 5px; padding: 3px 10px; font-size: 11px; cursor: pointer; }
   .copy-btn:hover { background: rgba(255,255,255,0.2); }
-
-  /* Symptoms/tags */
   .symptom-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
   .symptom { background: #f1f5f9; border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; font-size: 13px; color: var(--muted); }
-
-  /* Port grid */
   .port-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 0.75rem; }
   .port-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; }
   .port-card .port-name { font-weight: 600; font-size: 13px; margin-bottom: 2px; }
   .port-card .port-desc { font-size: 12px; color: var(--muted); }
   .port-card.do-not-use { border-color: #fca5a5; background: #fef2f2; }
   .port-card.do-not-use .port-name { color: #dc2626; }
-
-  /* In-box list */
   .inbox-list { display: flex; flex-direction: column; gap: 0.5rem; }
   .inbox-item { display: flex; align-items: center; gap: 0.75rem; background: var(--bg); border-radius: 8px; padding: 0.6rem 1rem; border: 1px solid var(--border); font-size: 14px; }
   .inbox-icon { width: 32px; height: 32px; background: var(--teal); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; flex-shrink: 0; }
-
-  p { margin-bottom: 0.75rem; }
-  strong { font-weight: 600; }
+  p { margin-bottom: 0.5rem; }
+  p:last-child { margin-bottom: 0; }
   .muted { color: var(--muted); font-size: 13px; }
-  hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
   .footer { color: var(--muted); font-size: 12px; text-align: center; padding: 2rem 0 1rem; }
 </style>
 </head>
 <body>
-
 <nav id="sidebar">
   <div id="sidebar-header">
     <h1>Bulletin Board Turbo</h1>
@@ -152,7 +98,6 @@
     <a class="nav-item nav-sub" href="#s2-1">2.1 What's in the Box</a>
     <a class="nav-item nav-sub" href="#s2-2">2.2 Physical Labels</a>
     <a class="nav-item" href="#s3">3. How the Device Works</a>
-
     <div class="nav-section">Dashboard</div>
     <a class="nav-item" href="#s4">4. LKT Signage Dashboard</a>
     <a class="nav-item nav-sub" href="#s4-1">4.1 Assets</a>
@@ -160,7 +105,6 @@
     <a class="nav-item nav-sub" href="#s4-3">4.3 Groups</a>
     <a class="nav-item nav-sub" href="#s4-4">4.4 Deploying Changes</a>
     <a class="nav-item nav-sub" href="#s4-5">4.5 Checking Player Status</a>
-
     <div class="nav-section">Troubleshooting</div>
     <a class="nav-item" href="#s5">5. Troubleshooting</a>
     <a class="nav-item nav-sub" href="#s5-1">5.1 Before You Begin</a>
@@ -173,9 +117,7 @@
     <a class="nav-item nav-sub" href="#s5-8">5.8 Remains Offline</a>
   </nav>
 </nav>
-
 <main id="main">
-
   <div class="page-header">
     <h1>Bulletin Board Turbo — Internal Troubleshooting Manual</h1>
     <div class="meta">
@@ -186,139 +128,122 @@
     </div>
   </div>
 
-  <!-- 1. Overview -->
   <div class="section" id="s1">
     <div class="section-title"><span class="section-num">1</span> Overview</div>
     <div class="card">
-      <p>The <strong>Bulletin Board Turbo</strong> is a digital bulletin board powered by a Raspberry Pi 4 running LKT Signage on the Debian operating system. It displays content such as announcements, schedules, and media on any connected TV or monitor via HDMI.</p>
+      <p>The Bulletin Board Turbo is a digital bulletin board powered by a Raspberry Pi 4 running LKT Signage on the Debian operating system. It displays content such as announcements, schedules, and media on any connected TV or monitor via HDMI.</p>
       <p>The device only requires three things to function:</p>
       <ul>
-        <li>A <strong>power source</strong> (supplied power adapter)</li>
-        <li>An <strong>HDMI connection</strong> to a TV or monitor</li>
-        <li>An <strong>internet connection</strong> (Wi-Fi or Ethernet)</li>
+        <li>A power source (supplied power adapter)</li>
+        <li>An HDMI connection to a TV or monitor</li>
+        <li>An internet connection (Wi-Fi or Ethernet)</li>
       </ul>
     </div>
   </div>
 
-  <!-- 2. Device Overview -->
   <div class="section" id="s2">
     <div class="section-title"><span class="section-num">2</span> Device Overview & Contents</div>
-
     <div class="subsection" id="s2-1">
       <div class="subsection-title">2.1 What's in the Box</div>
       <div class="card">
         <div class="inbox-list">
-          <div class="inbox-item"><div class="inbox-icon">🔌</div><div><strong>Micro-HDMI to HDMI cable</strong> — connects the device to the TV</div></div>
-          <div class="inbox-item"><div class="inbox-icon">⚡</div><div><strong>USB-C power cable</strong> — powers the device (must be used with a wall outlet)</div></div>
-          <div class="inbox-item"><div class="inbox-icon">💾</div><div><strong>MicroSD card</strong> — comes preinstalled in the device</div></div>
+          <div class="inbox-item"><div class="inbox-icon">🔌</div><div>Micro-HDMI to HDMI cable — connects the device to the TV</div></div>
+          <div class="inbox-item"><div class="inbox-icon">⚡</div><div>USB-C power cable — powers the device (must be used with a wall outlet)</div></div>
+          <div class="inbox-item"><div class="inbox-icon">💾</div><div>MicroSD card — comes preinstalled in the device</div></div>
         </div>
       </div>
     </div>
-
     <div class="subsection" id="s2-2">
       <div class="subsection-title">2.2 Physical Labels & Identifiers</div>
       <div class="card">
-        <p><strong>Top of device:</strong> A sticker displaying the Label King Turbo Communication Board name and support phone number.</p>
-        <p><strong>Port side — ports:</strong></p>
+        <p>Top of device: A sticker displaying the Label King Turbo Communication Board name and support phone number.</p>
+        <p>Port side — ports:</p>
         <div class="port-grid">
           <div class="port-card"><div class="port-name">USB-C</div><div class="port-desc">Power input</div></div>
           <div class="port-card"><div class="port-name">Micro-HDMI</div><div class="port-desc">Connect to TV</div></div>
           <div class="port-card"><div class="port-name">3.5mm Audio Jack</div><div class="port-desc">Audio output</div></div>
           <div class="port-card do-not-use"><div class="port-name">⚠ Micro-HDMI #2</div><div class="port-desc">Covered — do not use</div></div>
         </div>
-        <p style="margin-top:1rem"><strong>Front of device — ports:</strong></p>
+        <p style="margin-top:1rem">Front of device — ports:</p>
         <div class="port-grid">
           <div class="port-card"><div class="port-name">USB-A × 4</div><div class="port-desc">For keyboard or peripherals</div></div>
           <div class="port-card"><div class="port-name">Ethernet</div><div class="port-desc">Wired network connection</div></div>
         </div>
-        <p style="margin-top:1rem"><strong>Label side:</strong> A label showing the store identifier and an 8-character code. This code can be used to re-register the device with the LKT Signage dashboard if needed.</p>
-        <p><strong>Back of device:</strong> Contains the MicroSD card slot on the edge of the device. There is also a power/status light on the back that indicates whether the device is on and running.</p>
-        <p><strong>Bottom of device:</strong> A pair of velcro strips for mounting the device to the back of a television. The MicroSD card slot is also located on the edge of the device — this is where the preinstalled OS card sits.</p>
+        <p style="margin-top:1rem">Label side: A label showing the store identifier and an 8-character code. This code can be used to re-register the device with the LKT Signage dashboard if needed.</p>
+        <p>Back of device: Contains the MicroSD card slot on the edge of the device. There is also a power/status light on the back that indicates whether the device is on and running.</p>
+        <p>Bottom of device: A pair of velcro strips for mounting the device to the back of a television. The MicroSD card slot is also located on the edge of the device — this is where the preinstalled OS card sits.</p>
       </div>
     </div>
   </div>
 
-  <!-- 3. How it works -->
   <div class="section" id="s3">
     <div class="section-title"><span class="section-num">3</span> How the Device Works</div>
     <div class="card">
       <ul>
-        <li>Once powered on and connected to a TV via HDMI, a <strong>sample image</strong> should appear on the screen after booting.</li>
-        <li>Content is managed remotely through the <strong>LKT Signage dashboard</strong>.</li>
+        <li>Once powered on and connected to a TV via HDMI, a sample image should appear on the screen after booting.</li>
+        <li>Content is managed remotely through the LKT Signage dashboard.</li>
         <li>The device must be connected to the internet to receive and display updated content.</li>
       </ul>
-      <div class="callout callout-warning" style="margin-top:1rem">
-        <strong>Note on Power</strong>
-        The device must be powered using the <strong>supplied power adapter</strong>. Powering from a TV's USB port does not supply adequate power and will cause the device to shut off intermittently.
-      </div>
+      <div class="callout callout-warning" style="margin-top:1rem"><span class="callout-label">Note on Power</span>The device must be powered using the supplied power adapter. Powering from a TV's USB port does not supply adequate power and will cause the device to shut off intermittently.</div>
     </div>
   </div>
 
-  <!-- 4. Dashboard -->
   <div class="section" id="s4">
     <div class="section-title"><span class="section-num">4</span> Using the LKT Signage Dashboard</div>
-    <p class="muted" style="margin-bottom:1rem">Accessible at <strong>lktsignage.com</strong> — used to manage all content displayed on the Communication Boards.</p>
-
+    <p class="muted" style="margin-bottom:1rem">Accessible at lktsignage.com — used to manage all content displayed on the Communication Boards.</p>
     <div class="subsection" id="s4-1">
       <div class="subsection-title">4.1 Assets</div>
       <div class="card">
         <ul>
-          <li>All content (videos, images, documents, etc.) is referred to as an <strong>asset</strong> and must be uploaded in the Assets section.</li>
-          <li>When uploading, you can assign it to a <strong>category</strong> to make it easier to find and filter later.</li>
-          <li>You can set the <strong>duration</strong> — how long each image or slide stays on screen.</li>
-          <li>You can also set a <strong>start and/or end date</strong> to schedule when an asset will be active.</li>
+          <li>All content (videos, images, documents, etc.) is referred to as an asset and must be uploaded in the Assets section.</li>
+          <li>When uploading, you can assign it to a category to make it easier to find and filter later.</li>
+          <li>You can set the duration — how long each image or slide stays on screen.</li>
+          <li>You can also set a start and/or end date to schedule when an asset will be active.</li>
         </ul>
       </div>
     </div>
-
     <div class="subsection" id="s4-2">
       <div class="subsection-title">4.2 Playlists</div>
       <div class="card">
-        <p>Once an asset is uploaded, it must be assigned to a <strong>playlist</strong>. The following playlists have been created:</p>
+        <p>Once an asset is uploaded, it must be assigned to a playlist. The following playlists have been created:</p>
         <ul>
-          <li><strong>All Stores</strong> — content assigned here will play on all store boards.</li>
-          <li><strong>Individual store playlists</strong> — content assigned here will only play on that specific store's board.</li>
+          <li>All Stores — content assigned here will play on all store boards.</li>
+          <li>Individual store playlists — content assigned here will only play on that specific store's board.</li>
         </ul>
       </div>
     </div>
-
     <div class="subsection" id="s4-3">
       <div class="subsection-title">4.3 Groups</div>
       <div class="card">
         <ul>
-          <li>Playlists are assigned to <strong>groups</strong>. A group can have multiple playlists assigned to it.</li>
-          <li>Groups are where you manage device settings such as <strong>resolution</strong> and <strong>screen orientation</strong>.</li>
+          <li>Playlists are assigned to groups. A group can have multiple playlists assigned to it.</li>
+          <li>Groups are where you manage device settings such as resolution and screen orientation.</li>
           <li>Each player is assigned to a group.</li>
         </ul>
       </div>
     </div>
-
     <div class="subsection" id="s4-4">
       <div class="subsection-title">4.4 Deploying Changes</div>
       <div class="card">
         <ul>
-          <li>After uploading assets and assigning them to playlists and groups, you must <strong>deploy</strong> your changes for them to take effect.</li>
-          <li>To deploy all groups at once: click <strong>Groups</strong>, then click the <strong>Deploy All</strong> button in the top right corner.</li>
-          <li>To deploy a single group: click <strong>Groups</strong>, select the group, and deploy it individually.</li>
+          <li>After uploading assets and assigning them to playlists and groups, you must deploy your changes for them to take effect.</li>
+          <li>To deploy all groups at once: click Groups, then click the Deploy All button in the top right corner.</li>
+          <li>To deploy a single group: click Groups, select the group, and deploy it individually.</li>
         </ul>
-        <div class="callout callout-info" style="margin-top:0.75rem">
-          If you forget to deploy, the system will <strong>automatically deploy all changes at 10:00 AM every day</strong>.
-        </div>
+        <div class="callout callout-info" style="margin-top:0.75rem">If you forget to deploy, the system will automatically deploy all changes at 10:00 AM every day.</div>
       </div>
     </div>
-
     <div class="subsection" id="s4-5">
       <div class="subsection-title">4.5 Checking Player Status</div>
       <div class="card">
         <ul>
-          <li>To see whether a board is online, click <strong>Players</strong> — each player has a <strong>status indicator</strong> showing whether it is online or offline.</li>
-          <li>To see what is currently being displayed on a board, click <strong>Players</strong>, then click the <strong>&gt;_ button</strong> next to that player. This opens the <strong>Pi Shell</strong>, which shows a live snapshot of the screen along with playlist controls and other options.</li>
+          <li>To see whether a board is online, click Players — each player has a status indicator showing whether it is online or offline.</li>
+          <li>To see what is currently being displayed on a board, click Players, then click the &gt;_ button next to that player. This opens the Pi Shell, which shows a live snapshot of the screen along with playlist controls and other options.</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- 5. Troubleshooting -->
   <div class="section" id="s5">
     <div class="section-title"><span class="section-num">5</span> Troubleshooting</div>
 
@@ -327,12 +252,12 @@
       <div class="card">
         <p>Verify the following before addressing any specific issue:</p>
         <ul>
-          <li>The <strong>supplied power cable</strong> is securely connected to the device and a wall outlet — not a TV USB port.</li>
-          <li>The <strong>red power light</strong> on the unit is on.</li>
-          <li>The <strong>HDMI cable</strong> is firmly connected between the device and the TV.</li>
-          <li>The <strong>TV is powered on</strong> and set to the correct HDMI input.</li>
-          <li>The <strong>MicroSD card</strong> is fully inserted into the slot on the edge of the device.</li>
-          <li>The <strong>TV volume is turned up</strong> if the content includes audio.</li>
+          <li>The supplied power cable is securely connected to the device and a wall outlet — not a TV USB port.</li>
+          <li>The red power light on the unit is on.</li>
+          <li>The HDMI cable is firmly connected between the device and the TV.</li>
+          <li>The TV is powered on and set to the correct HDMI input.</li>
+          <li>The MicroSD card is fully inserted into the slot on the edge of the device.</li>
+          <li>The TV volume is turned up if the content includes audio.</li>
         </ul>
       </div>
     </div>
@@ -340,7 +265,6 @@
     <div class="subsection" id="s5-2">
       <div class="subsection-title">5.2 Device Not Booting / OS Not Loading</div>
       <div class="card">
-        <p><strong>Symptoms:</strong></p>
         <div class="symptom-list">
           <span class="symptom">Stuck on "cookie" loading screen</span>
           <span class="symptom">Rainbow block on screen</span>
@@ -349,54 +273,51 @@
           <span class="symptom">Black screen after powering on</span>
           <span class="symptom">Sample image never appears</span>
         </div>
-        <div class="callout callout-danger">
-          <strong>Important</strong>
-          These issues occur before the operating system fully loads and as a result are not affected by network issues. Do not troubleshoot Wi-Fi or the access point for these issues.
-        </div>
+        <div class="callout callout-danger"><span class="callout-label">Important</span>These issues occur before the operating system fully loads and are not affected by network issues. Do not troubleshoot Wi-Fi or the access point for these issues.</div>
 
         <div class="subsubsection" id="s5-2-1" style="margin-top:1.25rem">
           <div class="subsubsection-title">5.2.1 Power Cycle the Device</div>
           <ol class="steps">
-            <li>Unplug the power cable from the device.</li>
-            <li>Wait <strong>30 seconds</strong>, then plug it back in.</li>
-            <li>Wait up to <strong>60 seconds</strong> for the device to fully boot.</li>
+            <li><span class="step-text">Unplug the power cable from the device.</span></li>
+            <li><span class="step-text">Wait 30 seconds, then plug it back in.</span></li>
+            <li><span class="step-text">Wait up to 60 seconds for the device to fully boot.</span></li>
           </ol>
-          <div class="callout callout-success" style="margin-top:0.75rem">If the device boots normally, no further action needed. Note the incident in case it recurs.</div>
+          <div class="callout callout-success" style="margin-top:0.5rem">If the device boots normally, no further action needed. Note the incident in case it recurs.</div>
           <div class="callout callout-info">If the device still does not boot, continue to 5.2.2.</div>
         </div>
 
         <div class="subsubsection" id="s5-2-2" style="margin-top:1rem">
           <div class="subsubsection-title">5.2.2 Check the SD Card</div>
           <ol class="steps">
-            <li>Power off the device by unplugging the power cable.</li>
-            <li>Locate the MicroSD card slot on the edge of the device.</li>
-            <li>Gently slide the SD card fully into the slot until it feels secure.</li>
-            <li>Reconnect the power cable and wait up to <strong>60 seconds</strong> to boot.</li>
+            <li><span class="step-text">Power off the device by unplugging the power cable.</span></li>
+            <li><span class="step-text">Locate the MicroSD card slot on the edge of the device.</span></li>
+            <li><span class="step-text">Gently slide the SD card fully into the slot until it feels secure.</span></li>
+            <li><span class="step-text">Reconnect the power cable and wait up to 60 seconds to boot.</span></li>
           </ol>
-          <div class="callout callout-success" style="margin-top:0.75rem">If the card was loose, the device should now boot and display a sample image.</div>
+          <div class="callout callout-success" style="margin-top:0.5rem">If the card was loose, the device should now boot and display a sample image.</div>
           <div class="callout callout-info">If the card appeared secure, continue to 5.2.3.</div>
         </div>
 
         <div class="subsubsection" id="s5-2-3" style="margin-top:1rem">
           <div class="subsubsection-title">5.2.3 Inspect the SD Card for Damage</div>
           <ol class="steps">
-            <li>Power off and remove the SD card by sliding it out.</li>
-            <li>Visually inspect the card for cracks or damage to the gold contacts.</li>
-            <li>Re-insert the card firmly and power the device back on.</li>
+            <li><span class="step-text">Power off and remove the SD card by sliding it out.</span></li>
+            <li><span class="step-text">Visually inspect the card for cracks or damage to the gold contacts.</span></li>
+            <li><span class="step-text">Re-insert the card firmly and power the device back on.</span></li>
           </ol>
-          <div class="callout callout-danger" style="margin-top:0.75rem">If the card is visibly damaged, the SD card needs to be replaced or the device should be swapped out.</div>
+          <div class="callout callout-danger" style="margin-top:0.5rem">If the card is visibly damaged, the SD card needs to be replaced or the device should be swapped out.</div>
           <div class="callout callout-info">If the card looks fine, continue to 5.2.4.</div>
         </div>
 
         <div class="subsubsection" id="s5-2-4" style="margin-top:1rem">
           <div class="subsubsection-title">5.2.4 Verify the Power Supply</div>
-          <p>The Raspberry Pi 4 requires a <strong>5V / 3A USB-C power supply</strong>.</p>
+          <p>The Raspberry Pi 4 requires a 5V / 3A USB-C power supply.</p>
           <ol class="steps">
-            <li>Confirm the device is plugged into a <strong>wall outlet</strong> using the <strong>supplied power adapter</strong>.</li>
-            <li>If a different adapter or cable is in use, switch back to the supplied one.</li>
-            <li>Power the device on and wait up to 60 seconds.</li>
+            <li><span class="step-text">Confirm the device is plugged into a wall outlet using the supplied power adapter.</span></li>
+            <li><span class="step-text">If a different adapter or cable is in use, switch back to the supplied one.</span></li>
+            <li><span class="step-text">Power the device on and wait up to 60 seconds.</span></li>
           </ol>
-          <div class="callout callout-danger" style="margin-top:0.75rem">If the correct adapter is in use and the issue persists, the device should be replaced.</div>
+          <div class="callout callout-danger" style="margin-top:0.5rem">If the correct adapter is in use and the issue persists, the device should be replaced.</div>
         </div>
       </div>
     </div>
@@ -410,11 +331,11 @@
           <span class="symptom">Completely black screen</span>
         </div>
         <ol class="steps">
-          <li>Confirm the power outlet works by plugging in another device.</li>
-          <li>Test the USB-C power cable by using it to charge another device such as a phone or tablet — if it does not charge, the cable may be faulty and should be replaced.</li>
-          <li>Make sure the USB-C power cable is firmly connected to the Raspberry Pi.</li>
-          <li>Confirm the device is using the <strong>supplied power adapter</strong> plugged into a <strong>wall outlet</strong>.</li>
-          <li>Try a different wall outlet if available.</li>
+          <li><span class="step-text">Confirm the power outlet works by plugging in another device.</span></li>
+          <li><span class="step-text">Test the USB-C power cable by using it to charge another device such as a phone or tablet — if it does not charge, the cable may be faulty and should be replaced.</span></li>
+          <li><span class="step-text">Make sure the USB-C power cable is firmly connected to the Raspberry Pi.</span></li>
+          <li><span class="step-text">Confirm the device is using the supplied power adapter plugged into a wall outlet.</span></li>
+          <li><span class="step-text">Try a different wall outlet if available.</span></li>
         </ol>
         <div class="callout callout-danger">If the red light still does not come on, the power supply or board is likely faulty and the device should be replaced.</div>
       </div>
@@ -429,12 +350,12 @@
           <span class="symptom">Distorted or flickering image</span>
         </div>
         <ol class="steps">
-          <li>Confirm the HDMI cable is securely connected at both ends.</li>
-          <li>Check that the TV is set to the correct <strong>input/source</strong> (e.g., HDMI 1, HDMI 2).</li>
-          <li>If the correct input shows no signal, try switching to a different HDMI input on the TV and moving the cable to that port.</li>
-          <li>Try a different Micro-HDMI to HDMI cable if one is available. Note that this cable type is not commonly available — if a spare is not on hand, skip this step.</li>
-          <li>Power cycle the device (unplug power, wait 30 seconds, reconnect).</li>
-          <li>Connect the device to a different TV or monitor if possible to determine whether the problem is the device or the display. If no other TV or monitor is available, the device should be replaced.</li>
+          <li><span class="step-text">Confirm the HDMI cable is securely connected at both ends.</span></li>
+          <li><span class="step-text">Check that the TV is set to the correct input/source (e.g., HDMI 1, HDMI 2).</span></li>
+          <li><span class="step-text">If the correct input shows no signal, try switching to a different HDMI input on the TV and moving the cable to that port.</span></li>
+          <li><span class="step-text">Try a different Micro-HDMI to HDMI cable if one is available. Note that this cable type is not commonly available — if a spare is not on hand, skip this step.</span></li>
+          <li><span class="step-text">Power cycle the device (unplug power, wait 30 seconds, reconnect).</span></li>
+          <li><span class="step-text">Connect the device to a different TV or monitor if possible to determine whether the problem is the device or the display. If no other TV or monitor is available, the device should be replaced.</span></li>
         </ol>
       </div>
     </div>
@@ -447,11 +368,11 @@
           <span class="symptom">Scheduled content not appearing</span>
         </div>
         <ol class="steps">
-          <li>Confirm the device has an active internet connection (see 5.6).</li>
-          <li>Log in to the <strong>LKT Signage dashboard</strong> and verify the correct content or playlist is scheduled and published.</li>
-          <li>Check whether the device shows as <strong>online</strong> in the dashboard.</li>
-          <li>If online but content hasn't refreshed, manually deploy the group from the <strong>Groups</strong> page.</li>
-          <li>If the device shows as offline, resolve the network connection first, then recheck.</li>
+          <li><span class="step-text">Confirm the device has an active internet connection (see 5.6).</span></li>
+          <li><span class="step-text">Log in to the LKT Signage dashboard and verify the correct content or playlist is scheduled and published.</span></li>
+          <li><span class="step-text">Check whether the device shows as online in the dashboard.</span></li>
+          <li><span class="step-text">If online but content hasn't refreshed, manually deploy the group from the Groups page.</span></li>
+          <li><span class="step-text">If the device shows as offline, resolve the network connection first, then recheck.</span></li>
         </ol>
       </div>
     </div>
@@ -465,28 +386,27 @@
           <span class="symptom">Only sample image showing</span>
         </div>
         <ol class="steps">
-          <li>Confirm the internet connection is active at the device's location.</li>
-          <li><strong>If using Wi-Fi:</strong> Follow the steps in 5.6.1 to configure or re-enter Wi-Fi credentials.</li>
-          <li><strong>If using Ethernet:</strong> Check that the cable is firmly connected to both the Raspberry Pi and the router or network switch.</li>
-          <li>Power cycle the device — this restarts the network connection as well.</li>
-          <li>Log into the LKT Signage dashboard to confirm the device comes back online within a few minutes.</li>
+          <li><span class="step-text">Confirm the internet connection is active at the device's location.</span></li>
+          <li><span class="step-text">If using Wi-Fi: follow the steps in 5.6.1 to configure or re-enter Wi-Fi credentials.</span></li>
+          <li><span class="step-text">If using Ethernet: check that the cable is firmly connected to both the Raspberry Pi and the router or network switch.</span></li>
+          <li><span class="step-text">Power cycle the device — this restarts the network connection as well.</span></li>
+          <li><span class="step-text">Log into the LKT Signage dashboard to confirm the device comes back online within a few minutes.</span></li>
         </ol>
-
         <div class="subsubsection" id="s5-6-1" style="margin-top:1.25rem">
           <div class="subsubsection-title">5.6.1 How to Connect to Wi-Fi</div>
           <div class="callout callout-info">A USB keyboard is required for this process.</div>
-          <ol class="steps" style="margin-top:0.75rem">
-            <li>Plug a USB keyboard into any available USB port on the device.</li>
-            <li>Press <strong>F7</strong> to bring up the settings page.</li>
-            <li>Use the arrow keys to highlight <strong>WiFi Config</strong> and press <strong>Enter</strong>.</li>
-            <li>Use the arrow keys to select the <strong>country</strong> and press <strong>Enter</strong>.</li>
-            <li>Type in the <strong>network name (SSID)</strong> and press <strong>Enter</strong>.</li>
-            <li>Type in the <strong>network password</strong> and press <strong>Enter</strong>.</li>
-            <li>When asked if the network is hidden, answer accordingly and press <strong>Enter</strong>.</li>
-            <li>The configuration will be saved and you will be returned to the settings screen.</li>
-            <li>Press <strong>Tab</strong> to highlight <strong>Finish</strong>, then press <strong>Enter</strong> to restart the device.</li>
+          <ol class="steps" style="margin-top:0.5rem">
+            <li><span class="step-text">Plug a USB keyboard into any available USB port on the device.</span></li>
+            <li><span class="step-text">Press F7 to bring up the settings page.</span></li>
+            <li><span class="step-text">Use the arrow keys to highlight WiFi Config and press Enter.</span></li>
+            <li><span class="step-text">Use the arrow keys to select the country and press Enter.</span></li>
+            <li><span class="step-text">Type in the network name (SSID) and press Enter.</span></li>
+            <li><span class="step-text">Type in the network password and press Enter.</span></li>
+            <li><span class="step-text">When asked if the network is hidden, answer accordingly and press Enter.</span></li>
+            <li><span class="step-text">The configuration will be saved and you will be returned to the settings screen.</span></li>
+            <li><span class="step-text">Press Tab to highlight Finish, then press Enter to restart the device.</span></li>
           </ol>
-          <div class="callout callout-success" style="margin-top:0.75rem">After rebooting, check the LKT Signage dashboard to confirm the device is showing as online.</div>
+          <div class="callout callout-success" style="margin-top:0.5rem">After rebooting, check the LKT Signage dashboard to confirm the device is showing as online.</div>
         </div>
       </div>
     </div>
@@ -498,26 +418,22 @@
           <span class="symptom">F7 does nothing</span>
           <span class="symptom">Settings page won't open</span>
         </div>
-        <p><strong>Cause:</strong> This can occur when a system update overwrites the custom keymap configuration on the device.</p>
+        <p>Cause: This can occur when a system update overwrites the custom keymap configuration on the device.</p>
         <p>The keymap can be restored by running a command through the LKT Signage dashboard. If you are unsure how to do this, please ask Jordan.</p>
         <ol class="steps">
-          <li>Log in to <strong>lktsignage.com</strong> and click <strong>Players</strong>.</li>
-          <li>Click the <strong>&gt;_ button</strong> next to the affected player to open the Pi Shell.</li>
-          <li>Paste the following command as a single line and click <strong>Execute</strong>:</li>
+          <li><span class="step-text">Log in to lktsignage.com and click Players.</span></li>
+          <li><span class="step-text">Click the &gt;_ button next to the affected player to open the Pi Shell.</span></li>
+          <li><span class="step-text">Paste the following command as a single line and click Execute:</span></li>
         </ol>
-        <div class="code-block">
-          <button class="copy-btn" onclick="copyCmd()">Copy</button>
-          <span id="cmd">sudo rm /usr/share/X11/xkb/keycodes/evdev /home/pi/piSignagePro/misc/stretch/lxde-rc.xml ; sudo wget -O /usr/share/X11/xkb/keycodes/evdev https://raw.githubusercontent.com/ninjordan/lktsignageupdates/main/evdev ; sudo wget -O /home/pi/piSignagePro/misc/stretch/lxde-rc.xml https://raw.githubusercontent.com/ninjordan/lktsignageupdates/main/lxde-rc.xml ; reboot</span>
-        </div>
+        <div class="code-block"><button class="copy-btn" onclick="copyCmd()">Copy</button><span id="cmd">sudo rm /usr/share/X11/xkb/keycodes/evdev /home/pi/piSignagePro/misc/stretch/lxde-rc.xml ; sudo wget -O /usr/share/X11/xkb/keycodes/evdev https://raw.githubusercontent.com/ninjordan/lktsignageupdates/main/evdev ; sudo wget -O /home/pi/piSignagePro/misc/stretch/lxde-rc.xml https://raw.githubusercontent.com/ninjordan/lktsignageupdates/main/lxde-rc.xml ; reboot</span></div>
         <div class="callout callout-success">The device will reboot automatically. Once it comes back online, the F7 key should respond normally.</div>
-
         <div class="subsubsection" id="s5-7-1" style="margin-top:1.25rem">
           <div class="subsubsection-title">5.7.1 If the Device is Offline</div>
           <ol class="steps">
-            <li>Connect an Ethernet cable from the device to any available port on a router or network switch.</li>
-            <li>The device only needs <strong>power and Ethernet</strong> — it does not need to be connected to a TV or monitor.</li>
-            <li>Wait a minute or two, then check the <strong>Players</strong> page in the LKT Signage dashboard.</li>
-            <li>Once the device shows as online, follow the steps in 5.7 to run the command through the Pi Shell.</li>
+            <li><span class="step-text">Connect an Ethernet cable from the device to any available port on a router or network switch.</span></li>
+            <li><span class="step-text">The device only needs power and Ethernet — it does not need to be connected to a TV or monitor.</span></li>
+            <li><span class="step-text">Wait a minute or two, then check the Players page in the LKT Signage dashboard.</span></li>
+            <li><span class="step-text">Once the device shows as online, follow the steps in 5.7 to run the command through the Pi Shell.</span></li>
           </ol>
         </div>
       </div>
@@ -532,20 +448,17 @@
           <span class="symptom">Won't connect via Wi-Fi or Ethernet</span>
         </div>
         <ol class="steps">
-          <li>Confirm Wi-Fi has been configured via F7 or that an Ethernet cable is securely connected.</li>
-          <li>Power cycle the device and wait a few minutes for it to come back online.</li>
-          <li>Check the <strong>Players</strong> page in the LKT Signage dashboard to see if the status indicator has changed.</li>
+          <li><span class="step-text">Confirm Wi-Fi has been configured via F7 or that an Ethernet cable is securely connected.</span></li>
+          <li><span class="step-text">Power cycle the device and wait a few minutes for it to come back online.</span></li>
+          <li><span class="step-text">Check the Players page in the LKT Signage dashboard to see if the status indicator has changed.</span></li>
         </ol>
         <div class="callout callout-danger">If the device still shows as offline after confirming network connectivity and restarting, the device should be replaced.</div>
       </div>
     </div>
 
   </div>
-
   <div class="footer">Bulletin Board Turbo Internal Troubleshooting Manual — Version 1.1 — March 2026</div>
-
 </main>
-
 <script>
 function copyCmd() {
   const text = document.getElementById('cmd').innerText;
@@ -555,8 +468,6 @@ function copyCmd() {
     setTimeout(() => btn.textContent = 'Copy', 2000);
   });
 }
-
-// Highlight active nav item on scroll
 const sections = document.querySelectorAll('[id^="s"]');
 const navItems = document.querySelectorAll('.nav-item');
 const observer = new IntersectionObserver(entries => {
@@ -572,3 +483,40 @@ sections.forEach(s => observer.observe(s));
 </script>
 </body>
 </html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bulletin Board Turbo — Internal Troubleshooting Manual</title>
+<style>
+  :root {
+    --teal: #1BA8C8;
+    --teal-dark: #157a93;
+    --bg: #f4f6f8;
+    --sidebar-bg: #1e2530;
+    --sidebar-text: #cbd5e0;
+    --sidebar-active: #1BA8C8;
+    --card-bg: #ffffff;
+    --text: #1a202c;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --warning-bg: #fff7ed;
+    --warning-border: #f97316;
+    --info-bg: #eff6ff;
+    --info-border: #3b82f6;
+    --danger-bg: #fef2f2;
+    --danger-border: #ef4444;
+    --success-bg: #f0fdf4;
+    --success-border: #22c55e;
+    --code-bg: #1e2530;
+    --sidebar-width: 280px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; font-size: 15px; line-height: 1.7; }
+  #sidebar { width: var(--sidebar-width); background: var(--sidebar-bg); position: fixed; top: 0; left: 0; bottom: 0; overflow-y: auto; z-index: 100; padding-bottom: 2rem; }
+  #sidebar-header { background: var(--teal); padding: 1.25rem 1.5rem; }
+  #sidebar-header h1 { color: #fff; font-size: 14px; font-weight: 700; line-height: 1.4; }
+  #sidebar-header p { color: rgba(255,255,255,0.8); font-size: 11px; margin-top: 4px; }
+  #sidebar nav { padding: 1rem 0; }
+  .nav-section { padding: 0.5rem 1.5rem 0.25rem; color: #4a5568; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+  .nav-item { display: block; padding: 0.4rem 1.5rem; color: var(--sidebar-text); text-decoration: none; font-size: 13px; border
