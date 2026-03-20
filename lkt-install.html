@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Label King Turbo – Installation Guide</title>
+<style>
+  :root {
+    --teal: #1aacac;
+    --teal-dark: #138a8a;
+    --teal-light: #e6f7f7;
+    --black: #111;
+    --gray: #f4f4f4;
+    --text: #222;
+    --border: #d0eded;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; color: var(--text); }
+
+  /* HEADER */
+  header {
+    background: var(--black);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  .logo { display: flex; align-items: center; gap: 14px; }
+  .crown {
+    width: 48px; height: 38px;
+  }
+  .logo-text { color: white; line-height: 1.1; }
+  .logo-text .brand { font-size: 1.35rem; font-weight: 700; letter-spacing: 0.02em; color: var(--teal); }
+  .logo-text .sub { font-size: 1rem; font-style: italic; color: white; letter-spacing: 0.18em; }
+  .support-badge {
+    background: var(--teal);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+  .support-badge span { display: block; font-size: 0.95rem; letter-spacing: 0.04em; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0d1f1f 0%, #1a3535 50%, #0d1f1f 100%);
+    color: white;
+    padding: 52px 32px 48px;
+    text-align: center;
+    border-bottom: 3px solid var(--teal);
+  }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; color: white; margin-bottom: 8px; }
+  .hero h1 span { color: var(--teal); }
+  .hero p { font-size: 1.05rem; color: #aad4d4; max-width: 560px; margin: 0 auto 24px; }
+
+  /* ALERT BOX */
+  .alert {
+    background: #fff3cd;
+    border: 2px solid #e8a900;
+    border-radius: 8px;
+    padding: 16px 20px;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.92rem;
+    color: #5a4000;
+  }
+  .alert strong { color: #c87000; display: block; margin-bottom: 4px; font-size: 1rem; }
+
+  /* SEARCH */
+  .search-wrap {
+    background: var(--teal);
+    padding: 20px 32px;
+    display: flex;
+    justify-content: center;
+  }
+  .search-box {
+    display: flex;
+    width: 100%;
+    max-width: 560px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .search-box input {
+    flex: 1;
+    padding: 12px 18px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+  }
+  .search-box button {
+    background: var(--black);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+
+  /* NAV PILLS */
+  .nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .nav-pills a {
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .nav-pills a:hover { background: var(--teal); color: white; border-color: var(--teal); }
+
+  /* STEPS */
+  .step {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-left: 5px solid var(--teal);
+    border-radius: 10px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(0,180,180,0.06);
+    transition: box-shadow 0.2s;
+  }
+  .step:hover { box-shadow: 0 4px 18px rgba(0,180,180,0.13); }
+  .step-header {
+    background: var(--teal-light);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+  }
+  .step-num {
+    background: var(--teal);
+    color: white;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .step-title { font-size: 1.08rem; font-weight: 700; color: var(--teal-dark); flex: 1; }
+  .step-toggle { color: var(--teal); font-size: 1.1rem; transition: transform 0.2s; }
+  .step-body { padding: 18px 22px; }
+  .step-body ul { padding-left: 20px; }
+  .step-body li { margin-bottom: 8px; line-height: 1.6; font-size: 0.96rem; }
+  .step-body li::marker { color: var(--teal); }
+  .step.collapsed .step-body { display: none; }
+  .step.collapsed .step-toggle { transform: rotate(-90deg); }
+
+  /* SEARCH HIGHLIGHT */
+  mark { background: #ffe066; border-radius: 3px; padding: 0 2px; }
+  .step.hidden { display: none; }
+  .no-results { text-align: center; color: #888; padding: 40px; font-size: 1.1rem; display: none; }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    color: #aaa;
+    text-align: center;
+    padding: 28px 20px;
+    font-size: 0.88rem;
+  }
+  footer a { color: var(--teal); text-decoration: none; }
+  footer .big { font-size: 1.1rem; color: white; font-weight: 700; margin-bottom: 4px; }
+
+  @media (max-width: 600px) {
+    header { padding: 12px 16px; }
+    .hero h1 { font-size: 1.5rem; }
+    .container { padding: 20px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+
+    <div class="logo-text">
+      <div class="brand">Label King</div>
+      <div class="sub">T u r b o</div>
+    </div>
+  </div>
+  <a href="tel:18885464049" class="support-badge">
+    Technical Support<span>1-888-546-4049</span>
+  </a>
+</header>
+
+<div class="hero">
+  <h1><span>Installation</span> Guide</h1>
+  <p>Step-by-step setup instructions for your Label King Turbo label printing system.</p>
+  <div class="alert">
+    <strong>⚠ Before You Begin</strong>
+    The tablet has cellular connectivity but <strong>for best results please connect it to wi-fi.</strong>
+    You must be comfortable drilling into walls to mount the unit. Ensure a working power outlet is within 6 feet of your chosen location.
+    <br><br>For assistance call <strong>1-888-546-4049</strong>
+  </div>
+</div>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Search instructions… e.g. "velcro", "printer", "wi-fi"" oninput="doSearch(this.value)">
+    <button onclick="doSearch(document.getElementById('search').value)">🔍</button>
+  </div>
+</div>
+
+<div class="container">
+
+  <nav class="nav-pills">
+    <a href="#step1">1. Mount Stand</a>
+    <a href="#step2">2. Attach Tablet</a>
+    <a href="#step3">3. Connect Cables</a>
+    <a href="#step5">4. Test Printer</a>
+    <a href="#step6">5. Test Internet</a>
+  </nav>
+
+  <div id="steps">
+
+    <div class="step" id="step1" data-text="mounting stand wall optional hardware template">
+      <div class="step-header" onclick="toggleStep(this)">
+        <div class="step-num">1</div>
+        <div class="step-title">Mounting The Stand <em style="font-weight:400;font-size:0.9rem;">(Optional)</em></div>
+        <div class="step-toggle">▾</div>
+      </div>
+      <div class="step-body">
+        <ul>
+          <li>Mount the stand to a wall using the optional hardware included in the box.</li>
+          <li>You may not need all of the pieces depending on the wall type.</li>
+          <li>See the included mounting template for additional instructions.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step" id="step2" data-text="tablet stand velcro attach camera top sides">
+      <div class="step-header" onclick="toggleStep(this)">
+        <div class="step-num">2</div>
+        <div class="step-title">Attaching The Tablet</div>
+        <div class="step-toggle">▾</div>
+      </div>
+      <div class="step-body">
+        <ul>
+          <li>Attach the tablet to the stand by peeling the back off the velcro on the stand and pressing the tablet against it firmly.</li>
+          <li>Make sure the velcro is locked in place before attaching.</li>
+          <li>The camera should be at the top.</li>
+          <li>The tablet is larger than the stand and will extend off the sides — this is normal.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step" id="step3" data-text="cables power usb printer tablet turn on power button">
+      <div class="step-header" onclick="toggleStep(this)">
+        <div class="step-num">3</div>
+        <div class="step-title">Connecting The Cables</div>
+        <div class="step-toggle">▾</div>
+      </div>
+      <div class="step-body">
+        <ul>
+          <li>Connect the power cable for the stand to the wall outlet.</li>
+          <li>Depending on your tablet, you may have one or two cables on the side of the stand — connect them to the tablet.</li>
+          <li>Connect the power cable at the bottom of the stand to the printer. There may also be a USB cable depending on your hardware.</li>
+          <li>Turn on the tablet by holding the power button for up to 3 seconds.</li>
+          <li>Turn on the printer.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step" id="step5" data-text="test printer label quantity date blank calibrate settings">
+      <div class="step-header" onclick="toggleStep(this)">
+        <div class="step-num">4</div>
+        <div class="step-title">Testing The Printer</div>
+        <div class="step-toggle">▾</div>
+      </div>
+      <div class="step-body">
+        <ul>
+          <li>Test the system by printing a label.</li>
+          <li>Select an item, then a quantity to print. Some items may also require selecting a date.</li>
+          <li>Try printing a few labels to ensure there are no blank labels between items.</li>
+          <li>If blank labels are coming out, try <strong>calibrating the printer</strong> from the Settings screen.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step" id="step6" data-text="internet wifi cellular online settings connected message">
+      <div class="step-header" onclick="toggleStep(this)">
+        <div class="step-num">5</div>
+        <div class="step-title">Testing The Internet</div>
+        <div class="step-toggle">▾</div>
+      </div>
+      <div class="step-body">
+        <ul>
+          <li>Make sure the tablet is online by visiting the <strong>Settings screen</strong>.</li>
+          <li>You should see a message every 5 seconds indicating if the cellular and wi-fi are connected.</li>
+          <li>If the tablet is not connecting to the internet, please contact support at <strong><a href="tel:18885464049" style="color:var(--teal)">1-888-546-4049</a></strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="no-results" id="noResults">No results found. Try a different search term or <a href="tel:18885464049" style="color:var(--teal)">call support</a>.</p>
+
+</div>
+
+<footer>
+  <div class="big">Need help? We're here.</div>
+  Technical Support: <a href="tel:18885464049">1-888-546-4049</a>
+  <br><br>© 2026 Label King Turbo. All rights reserved.
+</footer>
+
+<script>
+function toggleStep(header) {
+  header.parentElement.classList.toggle('collapsed');
+}
+
+function doSearch(q) {
+  q = q.trim().toLowerCase();
+  const steps = document.querySelectorAll('.step');
+  let any = false;
+  steps.forEach(step => {
+    // Clear old highlights
+    step.querySelectorAll('mark').forEach(m => {
+      m.replaceWith(document.createTextNode(m.textContent));
+    });
+    step.querySelectorAll('li, p').forEach(el => el.normalize());
+  });
+
+  if (!q) {
+    steps.forEach(s => { s.classList.remove('hidden'); });
+    document.getElementById('noResults').style.display = 'none';
+    return;
+  }
+
+  steps.forEach(step => {
+    const text = (step.dataset.text + ' ' + step.innerText).toLowerCase();
+    if (text.includes(q)) {
+      step.classList.remove('hidden');
+      step.classList.remove('collapsed');
+      // Highlight
+      highlightText(step.querySelector('.step-body'), q);
+      any = true;
+    } else {
+      step.classList.add('hidden');
+    }
+  });
+  document.getElementById('noResults').style.display = any ? 'none' : 'block';
+}
+
+function highlightText(el, q) {
+  if (!el) return;
+  el.querySelectorAll('li').forEach(li => {
+    const html = li.innerHTML;
+    const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+    li.innerHTML = html.replace(re, '<mark>$1</mark>');
+  });
+}
+</script>
+</body>
+</html>
